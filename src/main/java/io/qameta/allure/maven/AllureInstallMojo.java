@@ -18,6 +18,7 @@ package io.qameta.allure.maven;
 import java.io.IOException;
 import java.nio.file.Paths;
 
+import com.seleniumToolkit.allureLoader.SeleniumToolkitCommandline;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.maven.execution.MavenSession;
 import org.apache.maven.plugin.AbstractMojo;
@@ -58,7 +59,7 @@ public class AllureInstallMojo extends AbstractMojo {
     public void execute() throws MojoExecutionException {
         try {
             final AllureCommandline commandline =
-                    new AllureCommandline(Paths.get(installDirectory), reportVersion);
+                    new SeleniumToolkitCommandline(Paths.get(installDirectory), reportVersion);
             getLog().info(String.format("Allure installation directory %s", installDirectory));
             getLog().info(String.format("Try to finding out allure %s", commandline.getVersion()));
 

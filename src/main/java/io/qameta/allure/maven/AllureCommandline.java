@@ -15,6 +15,7 @@
  */
 package io.qameta.allure.maven;
 
+import com.seleniumToolkit.allureLoader.SeleniumToolkitCommandline;
 import net.lingala.zip4j.ZipFile;
 import net.lingala.zip4j.exception.ZipException;
 import org.apache.commons.exec.CommandLine;
@@ -55,7 +56,7 @@ import static io.qameta.allure.maven.VersionUtils.versionCompare;
         "MultipleStringLiterals"})
 public class AllureCommandline {
 
-    public static final String ALLURE_DEFAULT_VERSION = "2.30.0";
+    public static final String ALLURE_DEFAULT_VERSION = SeleniumToolkitCommandline.TOOLKIT_REPORT_VERSION;
 
     private static final int DEFAULT_TIMEOUT = 3600;
 
@@ -224,7 +225,10 @@ public class AllureCommandline {
         unpack(allureZip.toFile());
     }
 
-    private void unpack(final File file) throws IOException {
+    //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    //TOOLKIT: CHANGED TO PROTECTED
+    //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    protected void unpack(final File file) throws IOException {
         try (ZipFile zipFile = new ZipFile(file)) {
             zipFile.extractAll(getInstallationDirectory().toAbsolutePath().toString());
         } catch (ZipException e) {

@@ -16,6 +16,7 @@
 package io.qameta.allure.maven;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.seleniumToolkit.allureLoader.SeleniumToolkitCommandline;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.text.StringSubstitutor;
 import org.apache.maven.artifact.DependencyResolutionRequiredException;
@@ -231,8 +232,9 @@ public abstract class AllureGenerateMojo extends AllureBaseMojo {
 
     private void installAllure() throws MavenReportException {
         try {
+
             final AllureCommandline commandline =
-                    new AllureCommandline(Paths.get(installDirectory), reportVersion);
+                    new SeleniumToolkitCommandline(Paths.get(installDirectory), reportVersion);
             getLog().info(String.format("Allure installation directory %s", installDirectory));
             getLog().info(String.format("Try to finding out allure %s", commandline.getVersion()));
 
@@ -256,7 +258,7 @@ public abstract class AllureGenerateMojo extends AllureBaseMojo {
         try {
             final Path reportPath = Paths.get(getReportDirectory());
 
-            final AllureCommandline commandline = new AllureCommandline(
+            final AllureCommandline commandline = new SeleniumToolkitCommandline(
                     Paths.get(getInstallDirectory()), reportVersion, reportTimeout);
 
             getLog().info("Generate report to " + reportPath);

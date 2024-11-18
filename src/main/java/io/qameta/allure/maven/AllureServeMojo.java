@@ -15,6 +15,7 @@
  */
 package io.qameta.allure.maven;
 
+import com.seleniumToolkit.allureLoader.SeleniumToolkitCommandline;
 import org.apache.maven.plugins.annotations.LifecyclePhase;
 import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
@@ -74,7 +75,7 @@ public class AllureServeMojo extends AllureGenerateMojo {
         try {
             final Path reportPath = Paths.get(getReportDirectory());
 
-            final AllureCommandline commandline = new AllureCommandline(
+            final AllureCommandline commandline = new SeleniumToolkitCommandline(
                     Paths.get(getInstallDirectory()), reportVersion, this.serveTimeout);
 
             getLog().info("Generate report to " + reportPath);
