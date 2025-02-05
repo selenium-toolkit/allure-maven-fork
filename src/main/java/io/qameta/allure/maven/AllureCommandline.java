@@ -98,7 +98,7 @@ public class AllureCommandline {
             commandLine.addArgument(resultsPath.toAbsolutePath().toString(), true);
         }
         commandLine.addArgument("-o");
-        commandLine.addArgument(reportPath.toAbsolutePath().toString(), true);
+        commandLine.addArgument(reportPath.toAbsolutePath().toString(), isWindows());
 
         return execute(commandLine, timeout);
     }

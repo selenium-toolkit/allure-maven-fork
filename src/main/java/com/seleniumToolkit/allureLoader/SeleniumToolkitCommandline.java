@@ -22,6 +22,7 @@ import org.apache.maven.shared.transfer.dependencies.resolve.DependencyResolver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
@@ -32,7 +33,7 @@ public class SeleniumToolkitCommandline extends AllureCommandline {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(SeleniumToolkitCommandline.class);
     public static final String TOOLKIT_REPORT_VERSION = "2.33";
-    public static final String ALLURE_COMMANDLINE = "allure-commandline/allure-commandline-".concat(TOOLKIT_REPORT_VERSION).concat(".zip");
+    public static final String ALLURE_COMMANDLINE = "allure-commandline"+ File.separator +"allure-commandline-".concat(TOOLKIT_REPORT_VERSION).concat(".zip");
 
     public SeleniumToolkitCommandline(Path installationDirectory, String version) {
         super(installationDirectory, version);
